@@ -1,0 +1,46 @@
+
+.section h1.title, .section p.subtitle{
+    color:white
+}
+
+.section h2.title{
+    color:white
+}
+
+.section h3.title{
+    color:white
+}
+
+.section table.table th,
+.section table.table td {
+    color: white; 
+}
+
+
+.section table.table {
+    background-color: transparent;
+}
+
+body{
+    background-image: url('https://www.xtrafondos.com/descargar.php?id=3145&resolucion=3840x2160');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+h5{
+    color:white
+}
+
+.section h4.title{
+    color:white
+}
+
+#cajaNombre{
+    background-color: transparent;
+}
+
+footer{
+    background-color:  #343434;
+}
