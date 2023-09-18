@@ -17,3 +17,10 @@ const despliega_rating = () => {
     oppenheimer.innerHTML = rating;
     oppenheimer.onclick = despliega_nombre;
 }
+
+const caja = document.getElementById("cajaNombre")
+console.log(caja);
+
+
+
+
