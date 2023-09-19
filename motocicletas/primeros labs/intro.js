@@ -68,9 +68,27 @@ function genera_poster(){
     for(let marca of marcas){
         html +=
             `<div class="column">
-                <figure class="image">
-                    <img class="is-rounded" src="${marca.imagen}">
-                </figure>
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="${marca.imagen}" alt="${marca.nombre}">
+                            </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-left">
+                                    <figure class="image is-48x48">
+                                        <img src="${marca.imagen}" alt="${marca.nombre}">
+                                    </figure>
+                                    </div>
+                                    <div class="media-content">
+                                    <p class="title is-4">${marca.nombre}</p>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    ${marca.sinopsis}
+                                </div>
+                            </div>
             </div>`;
     }
     html += `</div>`;
