@@ -40,7 +40,7 @@ document.getElementById("Nombre").onkeyup = () => {
 }
 
 
-const marcas = [
+let marcas = [
     {
         nombre: "KTM",
         imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/KTM-Logo.svg/1280px-KTM-Logo.svg.png",
@@ -87,6 +87,8 @@ function genera_poster(){
                                 </div>
                                 <div class="content">
                                     ${marca.sinopsis}
+                                    <br>
+                                    <button class="button is-danger is-rounded" onclick=quitar("${marca.nombre}")>No me gusta</button>
                                 </div>
                             </div>
             </div>`;
@@ -95,4 +97,16 @@ function genera_poster(){
     document.getElementById("poster").innerHTML = html;
 }
 
-genera_poster();
+
+function quitar(nombre) {
+    
+    let nuevas_marcas = new Array();
+    for(let marca of marcas) {
+        if (marca.nombre != nombre) {
+            nuevas_marcas.push(marca);
+        }
+    }
+    marcas = nuevas_marcas;
+    genera_poster();
+}
+document.getElementById("marcas_motos").onclick = genera_poster;
