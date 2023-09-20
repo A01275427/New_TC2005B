@@ -20,16 +20,39 @@ for (let item of arreglo) {
     }, item);
 }
 
+let marcas = [
+    {
+        nombre: "KTM",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/KTM-Logo.svg/1280px-KTM-Logo.svg.png",
+        descripcion: "KTM Sportmotorcycle AG es un fabricante de motocicletas y escudería de motocicletas de Austria, que se formó en 1992, pero remonta su fundación a 1934. En 1992 la empresa fue escindida de su matriz KTM cuando tuvo problemas financieros."
+    },
+    {
+        nombre: "Husqvarna",
+        imagen: "https://1000marcas.net/wp-content/uploads/2021/03/Husqvarna-Logo.png",
+        descripcion: "Husqvarna Motorcycles GmbH, es un fabricante de motocicletas de motocross, enduro y supermoto perteneciente desde comienzos de 2013 a KTM AG, propietaria de las marcas KTM Group ."
+    },
+    {
+        nombre: "Honda",
+        imagen: "https://1000marcas.net/wp-content/uploads/2021/03/Honda-Logo.jpg",
+        descripcion: "Honda es un fabricante japonés especializado en el sector de la automoción y las motocicletas que inicio su actividad en el año 1946. Además de en estos sectores tienen una gran experiencia en la robótica, náutica, aeronáutica y en componentes destinados a la industria del automóvil."
+    },
+    {
+        nombre: "Suzuki",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Suzuki_Motor_Corporation_logo.svg/2560px-Suzuki_Motor_Corporation_logo.svg.png",
+        descripcion: "Suzuki es una firma japonesa especializada en la producción de vehículos, motocicletas, motores para el sector náutico y otros muchos productos motorizados."
+    }
+];
 
 const http = require('http');
 
 const server = http.createServer( (request, response) => {    
     console.log(request.url);
     console.log(request.method);
+
     if(request.url == "/"){
 
         response.setHeader('Content-Type', 'text/html');
-        response.write(`
+        let html = `
         <!DOCTYPE html>
     <html lang="es">
     <head>
@@ -98,69 +121,39 @@ const server = http.createServer( (request, response) => {
             <div class="section">
                 <div class="container">
                     <h2 class="title is-4">Informacion General</h2>
-                    <ul class="buttons">
-                        <li><button class="button is-transparent">Torneos</button></li>
-                        <li><button class="button is-transparent">Categoria</button></li>
-                        <li><button class="button is-transparent">Reglas</button></li>
-                        <li><button class="button is-transparent">Equipo</button></li>
-                    </ul>
-                    </div>
-                    <br>
-                    <br>
-                    <br>
-                    <button id="marcas_motos" class="button is-danger is-rounded">Marcas famosas</button>
-                    <div id="poster"></div>
-                </div>
-            </section>
-        
-            <div> 
-                <button id="boton_info_pilotos" class="button is-info is-rounded">Información de pilotos</button>
-                <button id="boton_prox_eventos" class="button is-info is-rounded">Próximos eventos</button>
-                <button id="boton_imagen" class="button is-info is-rounded">Info Eventos</button>
-                <div id="equipo"></div>
-            </div>
-    
-    
-            <section id="cajaNombre">
-            <div>
-                <form class="box", style="background-color: transparent">
-                <div class="field">
-                    <label for="Nombre", style="color:white">Nombre</label>
-                    <input id="Nombre" class="input" type="text" placeholder="Usuario-123">
-                    </div>
-                </div>
-            </div>
-            </section>
-            <section class="section">
-                <div class="container">
-                    <h3 class="title is-5">Datos de Altleta</h3>
-                    <table class="table", style="background-color: transparent">
-                        <caption></caption>
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Fecha Nacimiento</th>
-                                <th>Edad</th>
-                                <th>Categoria</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Arturo Sánchez Rodríguez</td>
-                                <td>27/08/2002</td>
-                                <td>21</td>
-                                <td>Sub-21</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <br>
-                    <div class="container">
-                        <h5 id="title">
-                            
-                        </h5>
-                    </div>
-            </section>
+                    <div class="columns">`;
+                    for(let marca of marcas) {
+                        html += 
+                            `<div class="column">
+                                <div class="card">
+                                    <div class="card-image">
+                                        <figure class="image is-4by3">
+                                            <img src="${marca.imagen}" alt="${marca.nombre}">
+                                        </figure>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="media">
+                                            <div class="media-left">
+                                            <figure class="image is-48x48">
+                                                <img src="${marca.imagen}" alt="${marca.nombre}">
+                                            </figure>
+                                            </div>
+                                            <div class="media-content">
+                                            <p class="title is-4">${marca.nombre}</p>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="content">
+                                            ${marca.descripcion}
+                                            <br>
+                                            <button class="button is-danger is-rounded" onclick=quitar("${marca.nombre}")>Quitar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    }
+                    
+    html += `       </div>
         </main>
         <footer class="section">
             <div class="container">
@@ -172,7 +165,8 @@ const server = http.createServer( (request, response) => {
     </body>
     </html>
     
-        `);
+        `;
+        response.write(html);
         response.end();
 
     }
@@ -292,12 +286,30 @@ const server = http.createServer( (request, response) => {
 
         const datos = [];
         request.on('data', (dato)=>{
-            console.log(dato);
-            //datos.push(dato);
+            //console.log(dato);
+            datos.push(dato);
         });
 
         response.write('La marca que registraste es GENIAL');
         response.end();
+        
+        return request.on('end', () => {
+            const datos_completos = Buffer.concat(datos).toString();
+            console.log(datos_completos);
+            const primera_variable = datos_completos.split('&')[0];
+            console.log(primera_variable);
+            const primer_valor = primera_variable.split('=')[1];
+            console.log(primer_valor);
+            const descripcion = datos_completos.split('&')[1].split('=')[1];
+            response.write('La marca si se registrooo');
+            marcas.push({
+                nombre: primer_valor,
+                imagen: "https://c8.alamy.com/compes/2gcmjkc/vinnytsia-ucrania-6-de-agosto-de-2021-conjunto-de-logotipos-de-la-marca-de-motocicletas-yamaha-honda-ducati-kawasaki-triumph-bmw-harley-davidson-suzuki-aprilia-ktm-ed-2gcmjkc.jpg",
+                descripcion: descripcion
+            });
+            return response.end();
+        });
+
     }
 
     else{
@@ -379,17 +391,6 @@ const server = http.createServer( (request, response) => {
 </html>
         `)
     }
-
-    /*
-    
-
-    return request.on('end', () => {
-        const datos_completos = Buffer.concat(datos).toString();
-        console.log(datos_completos);
-        const nuevo_dato = datos_completos.split('=')[1];
-        return response.end();
-    });
-    */
 
 });
 
