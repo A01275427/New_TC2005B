@@ -1,0 +1,162 @@
+let moto_del_dia = "Ducati";
+
+console.log(moto_del_dia);
+
+const precio = 55;
+
+console.log(precio);
+
+console.error("Mensaje de error!");
+
+console.warn("Mensaje de advertencia!");
+
+console.info("Mensaje de información");
+
+console.assert(precio == 55);
+
+if(precio > 50){
+    var respuesta = "Demasiadoooo!";
+}else {
+    var respuesta = "Accesibleee!";
+}
+
+console.log(respuesta);
+
+for (let i = 1; i <= 10; i++){
+    console.log(i);
+}
+
+function vamonos(){
+    console.log("¡Fugaaaaa!");
+}
+
+vamonos();
+
+const funcion_anonima = () => {
+    console.log("Mensaje anonima");
+}
+
+funcion_anonima();
+
+const ducati = document.getElementById("Ducati");
+
+console.log(ducati);
+
+const arreglo = ["Elemento"];
+
+arreglo.push("otro elemento");
+
+arreglo[10] = "Uno mas";
+
+arreglo["Once"] = "otro mas";
+
+for(let i = 0; i < arreglo.length; i++){
+    console.log(arreglo[1]);
+}
+
+for (let posicion in arreglo){
+    console.log(posicion);
+}
+
+for(let valor of arreglo){
+    console.log(valor);
+}
+
+const objeto = {
+    atributo_1: "valor_1",
+    atributo_2: "valor_2",
+    atributo_3: "valor_3"
+}
+
+console.log(objeto);
+console.log(objeto.atributo_1);
+
+for(let posicion in objeto){
+    console.log(posicion);
+}
+
+function ejercicio_1(){
+    document.getElementById("ejercicio_1").innerHTML = "Ejercicio 1";
+}
+
+ejercicio_1();
+
+
+document.getElementById("Nombre").onkeyup = () => {
+    const red = Math.floor(Math.random() * 255);
+    const green = Math.floor(Math.random() * 255);
+    const blue = Math.floor(Math.random() * 255);
+    document.getElementById("Nombre").style.color = `rgb(${red}, ${green}, ${blue})`;
+}
+
+
+let marcas = [
+    {
+        nombre: "KTM",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/KTM-Logo.svg/1280px-KTM-Logo.svg.png",
+        descripcion: "KTM Sportmotorcycle AG es un fabricante de motocicletas y escudería de motocicletas de Austria, que se formó en 1992, pero remonta su fundación a 1934. En 1992 la empresa fue escindida de su matriz KTM cuando tuvo problemas financieros."
+    },
+    {
+        nombre: "Husqvarna",
+        imagen: "https://1000marcas.net/wp-content/uploads/2021/03/Husqvarna-Logo.png",
+        descripcion: "Husqvarna Motorcycles GmbH, es un fabricante de motocicletas de motocross, enduro y supermoto perteneciente desde comienzos de 2013 a KTM AG, propietaria de las marcas KTM Group ."
+    },
+    {
+        nombre: "Honda",
+        imagen: "https://1000marcas.net/wp-content/uploads/2021/03/Honda-Logo.jpg",
+        descripcion: "Honda es un fabricante japonés especializado en el sector de la automoción y las motocicletas que inicio su actividad en el año 1946. Además de en estos sectores tienen una gran experiencia en la robótica, náutica, aeronáutica y en componentes destinados a la industria del automóvil."
+    },
+    {
+        nombre: "Suzuki",
+        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Suzuki_Motor_Corporation_logo.svg/2560px-Suzuki_Motor_Corporation_logo.svg.png",
+        descripcion: "Suzuki es una firma japonesa especializada en la producción de vehículos, motocicletas, motores para el sector náutico y otros muchos productos motorizados."
+    }
+];
+
+function genera_poster(){
+    let html = `<div class="columns">`;
+    for(let marca of marcas){
+        html +=
+            `<div class="column">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img src="${marca.imagen}" alt="${marca.nombre}">
+                            </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-left">
+                                    <figure class="image is-48x48">
+                                        <img src="${marca.imagen}" alt="${marca.nombre}">
+                                    </figure>
+                                    </div>
+                                    <div class="media-content">
+                                    <p class="title is-4">${marca.nombre}</p>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    ${marca.sinopsis}
+                                    <br>
+                                    <button class="button is-danger is-rounded" onclick=quitar("${marca.nombre}")>No me gusta</button>
+                                </div>
+                            </div>
+            </div>`;
+    }
+    html += `</div>`;
+    document.getElementById("poster").innerHTML = html;
+}
+
+
+function quitar(nombre) {
+    
+    let nuevas_marcas = new Array();
+    for(let marca of marcas) {
+        if (marca.nombre != nombre) {
+            nuevas_marcas.push(marca);
+        }
+    }
+    marcas = nuevas_marcas;
+    genera_poster();
+}
+document.getElementById("marcas_motos").onclick = genera_poster;

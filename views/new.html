@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -65,71 +66,31 @@
     <main>
         <div class="section">
             <div class="container">
-                <h2 class="title is-4">Informacion General</h2>
-                <ul class="buttons">
-                    <li><button class="button is-transparent">Torneos</button></li>
-                    <li><button class="button is-transparent">Categoria</button></li>
-                    <li><button class="button is-transparent">Reglas</button></li>
-                    <li><button class="button is-transparent">Equipo</button></li>
-                </ul>
+                <h2 class="title is-4">Registra tu Marca favorita</h2>
+
+
+                <form action="/new" method="POST">
+    <label for="nombre">Nombre de la marca</label>
+    <input id="nombre" name="nombre" class="input" type="text" placeholder="Escribe aquí">
+    <br><br>
+    <label for="descripcion">Descripción de tu moto</label>
+    <textarea id="descripcion" name="descripcion" class="textarea" placeholder="Una excelente fabricadora de motos"></textarea>
+    <br>
+    <input id="registrar" name="registrar" type="submit" value="Registrar" class="button is-info">
+</form>
+
+
+
                 </div>
                 <br>
                 <br>
                 <br>
                 <button id="marcas_motos" class="button is-danger is-rounded">Marcas famosas</button>
                 <div id="poster"></div>
-                
             </div>
         </section>
-    
-        <div> 
-            <button id="boton_info_pilotos" class="button is-info is-rounded">Información de pilotos</button>
-            <button id="boton_prox_eventos" class="button is-info is-rounded">Próximos eventos</button>
-            <button id="boton_imagen" class="button is-info is-rounded">Info Eventos</button>
-            <div id="equipo"></div>
-        </div>
 
 
-        <section id="cajaNombre">
-        <div>
-            <form class="box", style="background-color: transparent">
-            <div class="field">
-                <label for="Nombre", style="color:white">Nombre</label>
-                <input id="Nombre" class="input" type="text" placeholder="Usuario-123">
-                </div>
-            </div>
-        </div>
-        </section>
-        <section class="section">
-            <div class="container">
-                <h3 class="title is-5">Datos de Altleta</h3>
-                <table class="table", style="background-color: transparent">
-                    <caption></caption>
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Fecha Nacimiento</th>
-                            <th>Edad</th>
-                            <th>Categoria</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Arturo Sánchez Rodríguez</td>
-                            <td>27/08/2002</td>
-                            <td>21</td>
-                            <td>Sub-21</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <br>
-                <div class="container">
-                    <h5 id="title">
-                        
-                    </h5>
-                </div>
-        </section>
     </main>
     <footer class="section">
         <div class="container">
