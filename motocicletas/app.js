@@ -244,14 +244,15 @@ const server = http.createServer( (request, response) => {
 
 
                 <form action="/new" method="POST">
-                <label for="nombre">Nombre de la marca</label>
-                <input id="nombre" name="nombre" class="input" type="text" placeholder="Escribe aqui">
-                <br><br>
-                <label for="descripcion">Descripcion de tu moto</label>
-                <textarea id="descripcion" name="descripcion" class="textarea" placeholder="Una excelente fabricadora de motos"></textarea>
-                <br>
-                <input id="registrar" name="registrar" type="submit" value="Registrar" class="button is-info">
-                </form>
+    <label for="nombre">Nombre de la marca</label>
+    <input id="nombre" name="nombre" class="input" type="text" placeholder="Escribe aquí">
+    <br><br>
+    <label for="descripcion">Descripción de tu moto</label>
+    <textarea id="descripcion" name="descripcion" class="textarea" placeholder="Una excelente fabricadora de motos"></textarea>
+    <br>
+    <input id="registrar" name="registrar" type="submit" value="Registrar" class="button is-info">
+</form>
+
 
 
                 </div>
