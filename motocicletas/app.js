@@ -1,3 +1,7 @@
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+
 console.log("hola desde node!");
 
 const filesystem = require('fs');

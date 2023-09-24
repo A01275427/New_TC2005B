@@ -4,6 +4,10 @@ const router = express.Router();
 
 const path = require('path');
 
+const cookieParser = require('cookie-parser');
+
+const logger = require('morgan');
+
 
 let marcas = [
     {
