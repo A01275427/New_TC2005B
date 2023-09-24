@@ -4,11 +4,6 @@ const router = express.Router();
 
 const path = require('path');
 
-const cookieParser = require('cookie-parser');
-
-const logger = require('morgan');
-
-
 let marcas = [
     {
         nombre: "KTM",
@@ -51,8 +46,10 @@ router.post('/new', (request, response, next) => {
 
 router.get("/", (request, response, next) => {
     response.render('motociletas/list.ejs',{
-        motos: motos
+        motos: marcas
     });
 });
+
+
 
 module.exports = router;
