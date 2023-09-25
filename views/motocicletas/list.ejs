@@ -3,7 +3,7 @@
 <h1 class="title">MOTOS</h1>
 <div class="columns">
     <% if(marcas.length > 0) {%>
-        <% for(let marcas of marcas){ %>
+        <% for(let marca of marcas){ %>
             <div class="columns">
                 <div class="card">
                     <div class="card-image">
@@ -26,7 +26,7 @@
                         <div class="content">
                             <%= marcas.descripcion %>
                             <br>
-                            <button class="button is-danger is-rounded" onclick=quitar("<%= marcas.nombre %>")>Quitar</button>
+                            <button class="button is-danger is-rounded" onclick='quitar("<%= marcas.nombre %>")'>Quitar</button>
                         </div>
                     </div>
                 </div>
