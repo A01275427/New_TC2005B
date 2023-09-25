@@ -4,6 +4,7 @@
 <div class="columns">
     <% if(marcas.length > 0) {%>
         <% for(let marca of marcas){ %>
+            <img src="<%= marca.imagen %>" alt="<%= marca.nombre %>">
             <div class="columns">
                 <div class="card">
                     <div class="card-image">
