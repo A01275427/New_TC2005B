@@ -69,6 +69,7 @@ let marcas = [
 ];
 
 function genera_poster(){
+    console.log("Function called");
     let html = `<div class="columns">`;
     for(let marca of marcas){
         html +=
