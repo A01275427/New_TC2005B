@@ -4,39 +4,37 @@
 <div class="columns">
     <% if(marcas.length > 0) {%>
         <% for(let marca of marcas){ %>
-            <img src="<%= marca.imagen %>" alt="<%= marca.nombre %>">
+            <img class="moto-image" src="<%= marca.imagen %>" alt="<%= marca.nombre %>">
             <div class="columns">
                 <div class="card">
                     <div class="card-image">
                         <figure class="image is-4by3">
-                            <img src="<%= marcas.imagen %>" alt="<%= marcas.nombre %>">
+                            <img src="<%= marca.imagen %>" alt="<%= marca.nombre %>">
                         </figure>
                     </div>
                     <div class="card-content">
                         <div class="media">
                             <div class="media-left">
                                 <figure class="image is-48x48">
-                                    <img src="<%= marcas.imagen%>" alt="<%= marcas.nombre %>">
+                                    <img src="<%= marca.imagen %>" alt="<%= marca.nombre %>">
                                 </figure>
                             </div>
                             <div class="media-content">
-                                <p class="title is-4"><%= marcas.nombre %></p>
+                                <p class="title is-4"><%= marca.nombre %></p>
                             </div>
                         </div>
 
                         <div class="content">
-                            <%= marcas.descripcion %>
+                            <%= marca.descripcion %>
                             <br>
-                            <button class="button is-danger is-rounded" onclick='quitar("<%= marcas.nombre %>")'>Quitar</button>
+                            <button class="button is-danger is-rounded" onclick='quitar("<%= marca.nombre %>")'>Quitar</button>
                         </div>
                     </div>
                 </div>
-                <% } %>
-                <% } else { %>
-                    <h2>No hay MOTOS.</h2>
-                <% } %>
-                
-            </div>
-        
-        <%- include('../includes/foot.ejs') %>
-                
+            <% } %>
+        <% } else { %>
+            <h2>No hay MOTOS.</h2>
+        <% } %>
+    </div>
+
+<%- include('../includes/foot.ejs') %>

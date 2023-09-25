@@ -42,3 +42,8 @@ h5{
 footer{
     background-color:  #343434;
 }
+
+.moto-image {
+    width: 200px;  /* o el tamaño que desees */
+    height: auto;
+}

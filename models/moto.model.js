@@ -28,9 +28,9 @@ module.exports = class motos{
         this.descripcion = nueva_moto.descripcion || "Moto italiana, elegante y duradera";
     }
     save(){
-        motos.push(this);
+        marcas.push(this);
     }
     static fetchAll(){
-        return motos;
+        return marcas;
     }
 }

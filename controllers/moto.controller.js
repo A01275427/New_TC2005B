@@ -21,11 +21,16 @@ exports.post_add = (request, response, next) => {
 
     newMoto.save();
 
-    response.redirect('/motocicletas')
+    response.redirect('/motos/motocicletas')
 }
-
+/*
 exports.get_list = (request, response, next) => {
     response.render('motocicletas/list.ejs', { 
-        motocicletas: moto.fetchAll()
+        marcas: motocicletas.fetchAll()
     });
+};
+*/
+exports.get_list = (request, response, next) => {
+    const allMotos = motocicletas.fetchAll();
+    response.render('motocicletas/list.ejs', { marcas: allMotos });
 };

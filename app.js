@@ -21,13 +21,10 @@ app.use((request, response, next) => {
 });
 
 const rutasMotos = require('./routes/moto.routes');
-
 app.use('/motos', rutasMotos);
 
 app.use((request, response, next) => {
-    console.log('Otro middleware!');
-    response.statusCode = 404;
-    response.send('NO SE PUEDE KRNAL');
+    response.status(404).send("NO SE PUEDE KRNAL")
 });
 
 app.listen(3000, () => {

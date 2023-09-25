@@ -2,13 +2,12 @@
 
 <h1 class="title">Registrar Motos</h1>
 <form action="/motos/add" method="POST">
-    <label for="nombre" name="nombre" class="input" type="text" placeholder="DUCATI"
+    <input id="nombre" name="nombre" class="input" type="text" placeholder="DUCATI">
     <br><br>
-    <label for="descripcion">descripcion</label>
+    <label for="descripcion">Descripcion</label>
     <textarea id="descripcion" name="descripcion" class="textarea" placeholder="Moto Italiana, elegante y duradera"></textarea>
     <br>
     <input id="registrar" name="registrar" type="submit" value="Registrar" class="button is-info">
 </form>
-
 
 <%- include('../includes/foot.ejs') %>
