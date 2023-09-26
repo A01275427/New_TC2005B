@@ -1,15 +1,14 @@
 <%- include('../includes/head.ejs') %>
 
 <h1 class="title">MOTOS</h1>
-<div class="columns">
+<div class="columns is-multiline">
     <% if(marcas.length > 0) {%>
         <% for(let marca of marcas){ %>
-            <img class="moto-image" src="<%= marca.imagen %>" alt="<%= marca.nombre %>">
-            <div class="columns">
+            <div class="column is-half">
                 <div class="card">
                     <div class="card-image">
                         <figure class="image is-4by3">
-                            <img src="<%= marca.imagen %>" alt="<%= marca.nombre %>">
+                            <img class="moto-image" src="<%= marca.imagen %>" alt="<%= marca.nombre %>">
                         </figure>
                     </div>
                     <div class="card-content">
@@ -23,7 +22,6 @@
                                 <p class="title is-4"><%= marca.nombre %></p>
                             </div>
                         </div>
-
                         <div class="content">
                             <%= marca.descripcion %>
                             <br>
@@ -31,10 +29,11 @@
                         </div>
                     </div>
                 </div>
-            <% } %>
-        <% } else { %>
-            <h2>No hay MOTOS.</h2>
+            </div>
         <% } %>
-    </div>
+    <% } else { %>
+        <h2>No hay MOTOS.</h2>
+    <% } %>
+</div>
 
 <%- include('../includes/foot.ejs') %>

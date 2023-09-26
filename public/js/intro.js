@@ -113,6 +113,7 @@ let marcas = [
     }
 ];
 
+/*
 function genera_poster(){
     let html = `<div class="columns">`;
     for(let marca of marcas){
@@ -146,6 +147,36 @@ function genera_poster(){
     html += `</div>`;
     document.getElementById("poster").innerHTML = html;
 }
+*/
+
+function quitar(nombre) {
+    marcas = marcas.filter(marca => marca.nombre !== nombre);
+    genera_poster();
+}
+
+
+function genera_poster(){
+    let html = '';
+    for(let i = 0; i < marcas.length; i+=2){
+        html += `<div class="columns">`;
+        for(let j = 0; j < 2 && i+j < marcas.length; j++){
+            let marca = marcas[i+j];
+            html += `
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3 moto-image">
+                                <img src="${marca.imagen}" alt="${marca.nombre}">
+                            </figure>
+                        </div>
+                        ...
+                    </div>
+                </div>`;
+        }
+        html += `</div>`;
+    }
+    document.getElementById("poster").innerHTML = html;
+}
 
 
 function quitar(nombre) {
@@ -160,3 +191,8 @@ function quitar(nombre) {
     genera_poster();
 }
 document.getElementById("marcas_motos").onclick = genera_poster;
+
+
+
+
+
