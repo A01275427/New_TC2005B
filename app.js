@@ -8,15 +8,16 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 
 const bodyParser = require('body-parser');
-
 app.use(bodyParser.urlencoded({extended: false}));
-
-
 
 
 //Middleware
 app.use((request, response, next) => {
     console.log('Middleware!');
+    const cookies = request.get('Cookie');
+    console.log(cookies);
+    console.log(cookies.split('=')[1]);
+    response.setHeader('Set-Cookie', 'ultimo_acceso=' + new Date() + '; HttpOnly');
     next();
 });
 
