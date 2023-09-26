@@ -12,14 +12,20 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 
 //Middleware
+//Middleware
 app.use((request, response, next) => {
     console.log('Middleware!');
-    const cookies = request.get('Cookie');
-    console.log(cookies);
-    console.log(cookies.split('=')[1]);
-    response.setHeader('Set-Cookie', 'ultimo_acceso=' + new Date() + '; HttpOnly');
+    //Acceder a la información de la cookie
+    const cookie = request.get('Cookie');
+    //Toda la informacion de las cookies
+    console.log(cookie);
+    //Valor de la primera cookie
+    console.log(cookie.split('=')[1]);
+    //Crear una nueva cookie
+    response.setHeader('Set-Cookie', 'ultimo_acceso=' + new Date() + '; HttpOnly SameSite=None; Secure');
     next();
 });
+
 
 const rutasMotos = require('./routes/moto.routes');
 app.use('/motos', rutasMotos);
