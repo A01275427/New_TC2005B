@@ -19,8 +19,13 @@ app.use((request, response, next) => {
     const cookie = request.get('Cookie');
     //Toda la informacion de las cookies
     console.log(cookie);
-    //Valor de la primera cookie
-    console.log(cookie.split('=')[1]);
+    if(cookie){
+         //Valor de la primera cookie
+        console.log(cookie.split('=')[1]);
+    }
+    else{
+        console.log('No hay cookie');
+    }
     //Crear una nueva cookie
     response.setHeader('Set-Cookie', 'ultimo_acceso=' + new Date() + '; HttpOnly SameSite=None; Secure');
     next();
