@@ -23,13 +23,13 @@ exports.post_add = (request, response, next) => {
 
     response.redirect('/motos/motocicletas')
 }
-/*
+
 exports.get_list = (request, response, next) => {
     response.render('motocicletas/list.ejs', { 
         marcas: motocicletas.fetchAll()
     });
 };
-*/
+
 exports.get_list = (request, response, next) => {
     const allMotos = motocicletas.fetchAll();
     response.render('motocicletas/list.ejs', { marcas: allMotos });
