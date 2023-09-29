@@ -8,3 +8,9 @@ exports.post_login = (request, response, next) => {
     request.session.username = request.body.username;
     response.redirect('/motocicletas');
 };
+
+exports.get_logout = (request, repsonse, next) => {
+    request.session.destroy(() => {
+        response.redirect('/useres/login');
+    });
+}
