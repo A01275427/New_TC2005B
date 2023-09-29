@@ -1,14 +1,6 @@
+const db = require('../util/database');
+
 let marcas = [
-    {
-        nombre: "KTM",
-        imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/KTM-Logo.svg/1280px-KTM-Logo.svg.png",
-        descripcion: "KTM Sportmotorcycle AG es un fabricante de motocicletas y escudería de motocicletas de Austria, que se formó en 1992, pero remonta su fundación a 1934. En 1992 la empresa fue escindida de su matriz KTM cuando tuvo problemas financieros."
-    },
-    {
-        nombre: "Husqvarna",
-        imagen: "https://1000marcas.net/wp-content/uploads/2021/03/Husqvarna-Logo.png",
-        descripcion: "Husqvarna Motorcycles GmbH, es un fabricante de motocicletas de motocross, enduro y supermoto perteneciente desde comienzos de 2013 a KTM AG, propietaria de las marcas KTM Group ."
-    },
     {
         nombre: "Honda",
         imagen: "https://1000marcas.net/wp-content/uploads/2021/03/Honda-Logo.jpg",
@@ -28,9 +20,11 @@ module.exports = class motos{
         this.descripcion = nueva_moto.descripcion || "Moto italiana, elegante y duradera";
     }
     save(){
-        marcas.push(this);
+        return db.execute(
+            'INSERT INTO motocicletas(nombre, imagen, descripcion) VALUES(?,?,?)',
+            [this.nombre, this.imagen, this.descripcion]);
     }
     static fetchAll(){
-        return marcas;
+        return db.execute('SELECT * FROM motocicletas')
     }
 }

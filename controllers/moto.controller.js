@@ -24,20 +24,37 @@ exports.post_add = (request, response, next) => {
         descripcion: request.body.descripcion,
     });
 
-    newMoto.save();
+    newMoto.save()
+        .then(() => {
+            return response.redirect('/motos/motocicletas');
+        }).catch((error) => {
+            console.log(error);
+            response.redirect('/users/login');
+        });
 
-    response.redirect('/motos/motocicletas')
 }
 
 exports.get_list = (request, response, next) => {
     const ultimo_acceso = new Date(request.get('cookie').split('=')[1]);
     const tiempo_transcurrido = (new Date().getTime() - ultimo_acceso.getTime()) / 1000;
 
-    response.render('motocicletas/list.ejs', { 
-        marcas: motocicletas.fetchAll(),
-        tiempo_transcurrido: tiempo_transcurrido,
-        username: request.session.username || '',
-    });
+    
+    Motocicletas.fetchAll()
+        .then(({rows, fieldData}) => {
+            console.log(rows);
+            console.log(fieldData);
+
+            return response.render('motocicletas/list.ejs', {
+                motocicletas: rows,
+                tiempo_transcurrido: tiempo_transcurrido,
+                username: request.session.username || '',
+            });
+        }).catch((error) => {
+            console.log(error);
+            response.redirect('/users/login');
+        }
+    );
+
 };
 
 exports.get_list = (request, response, next) => {
