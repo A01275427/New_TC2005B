@@ -1,5 +1,4 @@
 const motocicletas = require('../models/moto.model');
-const modelo = require('../models/moto.model');
 
 exports.get_add = (request, response, next) => {
     response.render('motocicletas/add.ejs', {

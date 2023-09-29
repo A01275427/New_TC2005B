@@ -11,6 +11,6 @@ exports.post_login = (request, response, next) => {
 
 exports.get_logout = (request, repsonse, next) => {
     request.session.destroy(() => {
-        response.redirect('/useres/login');
+        response.redirect('/users/login');
     });
 }
