@@ -1,0 +1,15 @@
+<%- include('../includes/head.ejs') %>
+
+<h1 class="title"> Bienvenido </h1>
+
+<form action="/users/login" method="post">
+    <label for="username">Nombre del usuario;</label>
+    <input id="username" name="username" class="input is-primary" type="text" placeholder="Primary input">
+    <br><br>
+    <label for="password">Password:</label>
+    <input id="password" name="password" class="input is-primary" type="password" placeholder="Primary input">
+    <br><br>
+    <input class="button is-primary" type="submit" value="Entrar">
+</form>
+
+<%- includes('../includes/foot.ejs') %>

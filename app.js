@@ -23,17 +23,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 //Middleware
 app.use((request, response, next) => {
     console.log('Middleware!');
-    //Acceder a la información de la cookie
-    const cookie = request.get('Cookie');
-    //Toda la informacion de las cookies
-    console.log(cookie);
-    if(cookie){
-         //Valor de la primera cookie
-        console.log(cookie.split('=')[1]);
-    }
-    else{
-        console.log('No hay cookie');
-    }
+
     //Crear una nueva cookie
     response.setHeader('Set-Cookie', 'ultimo_acceso=' + new Date() + '; HttpOnly SameSite=None; Secure');
     next();
@@ -42,6 +32,9 @@ app.use((request, response, next) => {
 
 const rutasMotos = require('./routes/moto.routes');
 app.use('/motos', rutasMotos);
+
+const rutasUsuarios = require('./routes/user.routes');
+app.use('/users', rutasUsuarios);
 
 app.use((request, response, next) => {
     response.status(404).send("NO SE PUEDE KRNAL")

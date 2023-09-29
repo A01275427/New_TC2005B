@@ -2,7 +2,9 @@ const motocicletas = require('../models/moto.model');
 const modelo = require('../models/moto.model');
 
 exports.get_add = (request, response, next) => {
-    response.render('motocicletas/add.ejs')
+    response.render('motocicletas/add.ejs', {
+        username: request.session.username || '',
+    })
     
     const allMotos = motocicletas.fetchAll();
     response.render('motocicletas/list.ejs', { motocicletas: allMotos });
@@ -31,7 +33,8 @@ exports.get_list = (request, response, next) => {
     console.log(tiempo_transcurrido);
     response.render('motocicletas/list.ejs', { 
         marcas: motocicletas.fetchAll(),
-        tiempo_transcurrido: tiempo_transcurrido
+        tiempo_transcurrido: tiempo_transcurrido,
+        username: request.session.username || '',
     });
 };
 
