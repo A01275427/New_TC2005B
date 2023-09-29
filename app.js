@@ -15,11 +15,11 @@ app.use(session({
     saveUninitialized: false, //Asegura que no se guarde una sesion para una petición que no lo necesita
 }))
 
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 
 
-//Middleware
 //Middleware
 app.use((request, response, next) => {
     console.log('Middleware!');
