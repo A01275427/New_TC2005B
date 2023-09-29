@@ -11,14 +11,14 @@
     <header>
         <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
+                
                 <span class="navbar-item">
-                    <%= username %>
+                    <% if (typeof username !== 'undefined' && username) { %>
+                        <%= username %>
+                    <% } %>                    
                 </span>
-                <a class="navbar-item" href="/motocicletas">
-                    Motocicletas
-                </a>
-                <a class="navbar-item" href="/motocicletas/add">
-                    Registrar
+                <a class="navbar-item" href="/users/login">
+                    Registrate
                 </a>
                 </a>
                 <section class="section">
@@ -71,4 +71,3 @@
     <main>
         <div class="section">
             <div class="container">
-                <h2 class="title is-4">Informacion General</h2>
