@@ -15,4 +15,15 @@ module.exports = class motos{
     static fetchAll(){
         return db.execute('SELECT * FROM motocicletas');
     }
+
+    static fecth(id){
+        if(id){
+            return db.execute('SELECT * FROM motocicletas WHERE id = ?',
+            [id]);
+        }
+        else{
+            return this.fetchAll();
+        }
+    }
+
 }

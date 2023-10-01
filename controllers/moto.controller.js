@@ -35,7 +35,7 @@ exports.get_list = (request, response, next) => {
 
     console.log(tiempo_transcurrido);
     
-    Motocicletas.fetchAll()
+    Motocicletas.fetch(request.params.id)
         .then(({rows, fieldData}) => {
             console.log(rows);
             console.log(fieldData);
