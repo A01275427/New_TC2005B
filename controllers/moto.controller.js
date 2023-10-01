@@ -16,10 +16,14 @@ exports.post_add = (request, response, next) => {
         descripcion: request.body.descripcion,
     });
 
-    newMoto.save();
-
-    response.redirect('/motos');
-
+    newMoto.save()
+        .then(() => {
+            return response.redirect('/motos');
+        })
+        .catch((error) => {
+            console.log(error);
+            response.redirect('/users/login');
+        });
 }
 
 exports.get_list = (request, response, next) => {
@@ -44,8 +48,7 @@ exports.get_list = (request, response, next) => {
         }).catch((error) => {
             console.log(error);
             response.redirect('/users/login');
-        }
-    );
+        });
 
 };
 
