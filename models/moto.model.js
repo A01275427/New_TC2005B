@@ -33,14 +33,6 @@ module.exports = class motos{
         motos.push(this);
     }
     static fetchAll(){
-        return db.execute('SELECT * FROM motocicletas')
-            .then(([rows, fieldData]) => {
-                console.log(rows);
-                console.log(fieldData);
-            })
-            .catch((error) => {
-                console.log(error);
-            }
-        );
+        return db.execute('SELECT * FROM motocicletas');
     }
 }

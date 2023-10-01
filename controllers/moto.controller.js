@@ -1,18 +1,10 @@
 const motocicletas = require('../models/moto.model');
-const Modelo = require('../models/moto.model');
 
 exports.get_add = (request, response, next) => {
     response.render('motocicletas/add.ejs', {
         username: request.session.username || '',
     })
-    
-    const allMotos = motocicletas.fetchAll();
-    response.render('motocicletas/list.ejs', { 
-        motocicletas: allMotos,
-        username:request.session.username || '',
-     });
 };
-
 
 
 exports.post_add = (request, response, next) => {
@@ -24,20 +16,20 @@ exports.post_add = (request, response, next) => {
         descripcion: request.body.descripcion,
     });
 
-    newMoto.save()
-        .then(() => {
-            return response.redirect('/motos/motocicletas');
-        }).catch((error) => {
-            console.log(error);
-            response.redirect('/users/login');
-        });
+    newMoto.save();
+
+    response.redirect('/motos');
 
 }
 
 exports.get_list = (request, response, next) => {
     const ultimo_acceso = new Date(request.get('cookie').split('=')[1]);
+
+    console.log(ultimo_acceso.getTime());
+
     const tiempo_transcurrido = (new Date().getTime() - ultimo_acceso.getTime()) / 1000;
 
+    console.log(tiempo_transcurrido);
     
     Motocicletas.fetchAll()
         .then(({rows, fieldData}) => {
@@ -56,6 +48,8 @@ exports.get_list = (request, response, next) => {
     );
 
 };
+
+/*
 
 exports.get_list = (request, response, next) => {
     const cookie = request.get('Cookie');
@@ -81,3 +75,4 @@ exports.get_list = (request, response, next) => {
         tiempo_transcurrido: tiempo_transcurrido || 'Desconocido'
     });
 };
+*/
