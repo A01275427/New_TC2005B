@@ -3,6 +3,7 @@ const motocicletas = require('../models/moto.model');
 exports.get_add = (request, response, next) => {
     response.render('motocicletas/add.ejs', {
         username: request.session.username || '',
+        isLoggedIn: request.session.isLoggedIn || false,
     })
 };
 
@@ -41,6 +42,7 @@ exports.get_list = (request, response, next) => {
                 marcas: rows,
                 tiempo_transcurrido: tiempo_transcurrido,
                 username: request.session.username || '',
+                isLoggedIn: request.session.isLoggedIn || false,
             });
         }).catch((error) => {
             console.log(error);
