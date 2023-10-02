@@ -2,6 +2,18 @@
 
 <h1 class="title">Registra tu Usuario (es gratis)</h1>
 
+<% if(error) { %>
+    <article class="message is-warning">
+        <div class="message-header">
+            <p> Falla en la matrix</p>
+            <button class="delete" aria-label="delete"></button>
+        </div>
+        <div class="message-body">
+            <strong><%= error.sqlMessage %></strong>
+        </div>
+    </article>
+}
+
 <form action="/users/add" method="POST">
     <label for="nombre">Nombre completo: </label>
     <input id="nombre" name="nombre" class="input is-primary" type="text" placeholder="Fernando Palomo Aguilar">
