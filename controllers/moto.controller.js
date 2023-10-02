@@ -38,7 +38,7 @@ exports.get_list = (request, response, next) => {
             console.log(fieldData);
 
             return response.render('motocicletas/list.ejs', {
-                motocicletas: rows,
+                marcas: rows,
                 tiempo_transcurrido: tiempo_transcurrido,
                 username: request.session.username || '',
             });
