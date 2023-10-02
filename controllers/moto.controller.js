@@ -33,7 +33,7 @@ exports.get_list = (request, response, next) => {
     console.log(tiempo_transcurrido);
     
     motocicletas.fetch(request.params.id)
-        .then(({rows, fieldData}) => {
+        .then(([rows, fieldData]) => {
             console.log(rows);
             console.log(fieldData);
 
@@ -48,31 +48,3 @@ exports.get_list = (request, response, next) => {
         });
 
 };
-
-/*
-
-exports.get_list = (request, response, next) => {
-    const cookie = request.get('Cookie');
-    let ultimo_acceso;
-    let tiempo_transcurrido;
-
-    if (cookie && cookie.includes('ultimo_acceso')) {
-        const fechaString = cookie.split('ultimo_acceso=')[1].split(';')[0];
-        ultimo_acceso = new Date(fechaString);
-
-        if (!isNaN(ultimo_acceso.getTime())) {
-            tiempo_transcurrido = (new Date().getTime() - ultimo_acceso.getTime()) / 1000;
-            console.log(tiempo_transcurrido);
-        } else {
-            console.log('Fecha de último acceso no válida');
-        }
-    } else {
-        console.log('No hay cookie de último acceso');
-    }
-
-    response.render('motocicletas/list.ejs', { 
-        marcas: motocicletas.fetchAll(),
-        tiempo_transcurrido: tiempo_transcurrido || 'Desconocido'
-    });
-};
-*/
