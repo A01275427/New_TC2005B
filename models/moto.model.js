@@ -16,7 +16,7 @@ module.exports = class motos{
         return db.execute('SELECT * FROM motocicletas');
     }
 
-    static fecth(id){
+    static fetch(id){
         if(id){
             return db.execute('SELECT * FROM motocicletas WHERE id = ?',
             [id]);
