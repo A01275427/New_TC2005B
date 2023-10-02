@@ -1,6 +1,6 @@
 <%- include('../includes/head.ejs') %>
 
-<h1 class="title">Registra tu Usuario (es gratis)</h1>
+<h1 class="title">Registra tu Usuario</h1>
 
 <% if(error) { %>
     <article class="message is-warning">
@@ -12,7 +12,8 @@
             <strong><%= error.sqlMessage %></strong>
         </div>
     </article>
-}
+<% } %>
+
 
 <form action="/users/add" method="POST">
     <label for="nombre">Nombre completo: </label>
