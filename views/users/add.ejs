@@ -1,0 +1,18 @@
+<%- include('../includes/head.ejs') %>
+
+<h1 class="title">Registra tu Usuario (es gratis)</h1>
+
+<form action="/users/add" method="POST">
+    <label for="nombre">Nombre completo: </label>
+    <input id="nombre" name="nombre" class="input is-primary" type="text" placeholder="Fernando Palomo Aguilar">
+    <br><br>
+    <label for="username">Nombre de usuraio:</label>
+    <input id="username" name="username" class="input is-primary" type="text" placeholder="Arsanmx">
+    <br><br>
+    <label for="password">Password:</label>
+    <input id="password" name="password" class="input is-primary" type="password" placeholder="*****">
+    <br><br>
+    <input class="button is-primary" type="submit" value="Entrar">
+</form>
+
+<%- include('../includes/foot.ejs') %>
