@@ -5,6 +5,7 @@ exports.get_login = (request, response, next) => {
     response.render('users/login.ejs', {
         username: '',
         isLoggedIn: request.session.isLoggedIn || false,
+        privilegios: request.session.privilegios || [],
     });
 };
 
@@ -66,6 +67,7 @@ exports.get_add = (request, response, next) => {
         username: '',
         isLoggedIn: request.session.isLoggedIn || false,
         error: error,
+        privilegios: request.session.privilegios || [],
     });
 };
 

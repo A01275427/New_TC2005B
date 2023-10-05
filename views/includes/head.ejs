@@ -13,15 +13,20 @@
             <div class="navbar-brand">
                 <% if(isLoggedIn == true) { %>
                 <span class="navbar-item">
-                    <% if (typeof username !== 'undefined' && username) { %>
-                        <%= username %>
-                    <% } %>                    
+                    <%= username %>
                 </span>
-                <a class="navbar-item" href="/users/login">
-                    Registrate
-                </a>
-                <% } %>
-                </a>
+                <% for(let permiso of privilegios) { %>
+                    <% if(permiso.nombre == 'motos_ver') { %>
+                        <a class="navbar-item" href="/motos">
+                            Motos
+                        </a>
+                        <% } %>
+                        <% if(permiso.nombre == 'motos_agregar') { %>
+                            <a class="navbar-item" href="/motos/add">
+                                Registrar
+                            </a>
+                        <% } %>
+                    <% } %>
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
