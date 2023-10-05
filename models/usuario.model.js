@@ -23,4 +23,13 @@ module.exports = class Usuario {
         return db.execute('SELECT * FROM usuarios WHERE username = ?',
         [username]);
     }
+    static getPrivilegios(id_usuarios){
+        return db.execute(
+            `SELECT p.nombre
+            FROM usuarios u, usuarios_rol ur, roles r, rol_privilegios rp,
+                privilegios p
+            WHERE u.id = ? AND u.id = ur.id_usuario AND ur.id_rol = r.id
+                AND rp.id_rol = r.id AND rp.id_privilegios = p.id`,
+            [id_usuario]);
+    }
 }
