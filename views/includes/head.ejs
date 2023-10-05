@@ -11,7 +11,7 @@
     <header>
         <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                
+                <% if(isLoggedIn == true) { %>
                 <span class="navbar-item">
                     <% if (typeof username !== 'undefined' && username) { %>
                         <%= username %>
@@ -20,6 +20,7 @@
                 <a class="navbar-item" href="/users/login">
                     Registrate
                 </a>
+                <% } %>
                 </a>
                 <div class="navbar-end">
                     <div class="navbar-item">
