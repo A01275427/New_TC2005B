@@ -12,10 +12,7 @@ exports.get_login = (request, response, next) => {
 exports.post_login = (request, response, next) => {
     Usuario.fetchOne(request.body.username)
         .then(([users, fieldData]) =>{
-            //Para obtener el primer elemento de la consulta
-            //(la consulta solo devuelve máximo 1 elemento)
             const user = users[0];
-
             if(users.length > 0){
                 bcrypt.compare(request.body.password, user.password)
                 .then(doMatch => {
