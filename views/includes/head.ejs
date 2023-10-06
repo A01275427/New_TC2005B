@@ -12,7 +12,7 @@
         <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <% if(isLoggedIn == true) { %>
-                <span class="navbar-item">
+                <span class="navbar-item"
                     <%= username %>
                 </span>
                 <% for(let permiso of privilegios) { %>
@@ -27,6 +27,7 @@
                                 Registrar
                             </a>
                         <% } %>
+                    <% } %>
                     <% } %>
                 <div class="navbar-end">
                     <div class="navbar-item">
