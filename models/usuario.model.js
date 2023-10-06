@@ -26,10 +26,10 @@ module.exports = class Usuario {
     static getPrivilegios(id_usuario){
         return db.execute(
             `SELECT p.nombre
-            FROM usuarios u, usuarios_rol ur, roles r, rol_privilegios rp,
+            FROM usuarios u, usuarios_rol ur, roles r, rol_privilegio rp,
                 privilegios p
             WHERE u.id = ? AND u.id = ur.id_usuario AND ur.id_rol = r.id
-                AND rp.id_rol = r.id AND rp.id_privilegios = p.id`,
+                AND rp.id_rol = r.id AND rp.id_privilegio = p.id`,
             [id_usuario]);
     }
 }
