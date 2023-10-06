@@ -6,6 +6,7 @@ module.exports = (request, response, next) => {
         }
     }
     if(!has_privilege){
+        console.log('user no authorized to add motos')
         return response.redirect('/users/login');
     }
     next();
